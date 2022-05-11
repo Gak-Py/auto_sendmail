@@ -11,7 +11,7 @@ now = dt.datetime.now()
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
-password = os.environ.get("PASSWORD") # 環境変数の値
+password = os.environ.get("PASSWORD") # 環境変数
 my_email = os.environ.get("MY_EMAIL")
 
 data = pd.read_csv("birthdays.csv")
