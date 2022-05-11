@@ -8,15 +8,13 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 
 now = dt.datetime.now()
-year = now.year
-day_of_week = now.weekday()
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
-password = os.environ.get("PASSWORD") # 環境変数の値をAPに代入
+password = os.environ.get("PASSWORD") # 環境変数の値
 my_email = os.environ.get("MY_EMAIL")
 
-data = pd.read_csv("birthdays_sample.csv")
+data = pd.read_csv("birthdays.csv")
 data_dic = data.to_dict(orient="records")
 
 for i in range(len(data_dic)):
@@ -30,3 +28,5 @@ for i in range(len(data_dic)):
                 from_addr=my_email,
                 to_addrs=data_dic[i]["email"],
                 msg=f"Subject:Happy Birthday!\n\n{letter}")
+    else:
+        print("Not birthday")
